@@ -1,0 +1,58 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWishListLabel" jhiTranslate="pruebaCompletaJHipsterApp.wishList.home.createOrEditLabel">Create or edit a Wish List</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!wishList.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="wishList.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaCompletaJHipsterApp.wishList.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                [(ngModel)]="wishList.nombre" required />
+            <div [hidden]="!(editForm.controls.nombre?.dirty && editForm.controls.nombre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nombre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaCompletaJHipsterApp.wishList.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
+            <div class="input-group">
+                <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" ngbDatepicker  #fechaCreacionDp="ngbDatepicker" [(ngModel)]="wishList.fechaCreacion"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="fechaCreacionDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaCompletaJHipsterApp.wishList.escondido" for="field_escondido">Escondido</label>
+            <input type="checkbox" class="form-control" name="escondido" id="field_escondido"
+                [(ngModel)]="wishList.escondido"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaCompletaJHipsterApp.wishList.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="wishList.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === wishList.user?.id ? wishList.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

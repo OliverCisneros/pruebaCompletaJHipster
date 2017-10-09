@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "wishList"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "escondido",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171009171001",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "wish_list",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

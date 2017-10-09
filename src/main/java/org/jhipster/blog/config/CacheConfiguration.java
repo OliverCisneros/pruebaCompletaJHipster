@@ -41,6 +41,7 @@ public class CacheConfiguration {
             cm.createCache(org.jhipster.blog.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(org.jhipster.blog.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(org.jhipster.blog.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(org.jhipster.blog.domain.WishList.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
