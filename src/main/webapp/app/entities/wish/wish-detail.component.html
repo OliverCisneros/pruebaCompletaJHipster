@@ -1,0 +1,35 @@
+
+<div *ngIf="wish">
+    <h2><span jhiTranslate="pruebaCompletaJHipsterApp.wish.detail.title">Wish</span> {{wish.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pruebaCompletaJHipsterApp.wish.productId">Product Id</span></dt>
+        <dd>
+            <span>{{wish.productId}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaCompletaJHipsterApp.wish.precio">Precio</span></dt>
+        <dd>
+            <span>{{wish.precio}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaCompletaJHipsterApp.wish.wishList">Wish List</span></dt>
+        <dd>
+            <div *ngIf="wish.wishList">
+                <a [routerLink]="['/wish-list', wish.wishList?.id]">{{wish.wishList?.nombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'wish/'+ wish.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

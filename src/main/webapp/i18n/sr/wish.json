@@ -1,0 +1,23 @@
+{
+    "pruebaCompletaJHipsterApp": {
+        "wish" : {
+            "home": {
+                "title": "Wishes",
+                "createLabel": "Kreiraj novi Wish",
+                "createOrEditLabel": "Kreirajte ili izmenite Wish"
+            },
+            "created": "Kreiran je novi Wish pod nazivom {{ param }}",
+            "updated": "Wish pod nazivom {{ param }} je ažuriran",
+            "deleted": "Wish pod nazivom {{ param }} je obrisan",
+            "delete": {
+                "question": "Da li ste sigurni da želite da obrišete Wish pod nazivom {{ id }}?"
+            },
+            "detail": {
+                "title": "Wish"
+            },
+            "productId": "Product Id",
+            "precio": "Precio",
+            "wishList": "Wish List"
+        }
+    }
+}
