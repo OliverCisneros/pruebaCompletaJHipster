@@ -1,6 +1,10 @@
 # pruebaCompletaJHipster
 This application was generated using JHipster 4.8.2, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.8.2](http://www.jhipster.tech/documentation-archive/v4.8.2).
 
+This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
+
+This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -155,7 +159,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 
 [JHipster Homepage and latest documentation]: http://www.jhipster.tech
 [JHipster 4.8.2 archive]: http://www.jhipster.tech/documentation-archive/v4.8.2
-
+[Doing microservices with JHipster]: http://www.jhipster.tech/documentation-archive/v4.8.2/microservices-architecture/
 [Using JHipster in development]: http://www.jhipster.tech/documentation-archive/v4.8.2/development/
 [Using Docker and Docker-Compose]: http://www.jhipster.tech/documentation-archive/v4.8.2/docker-compose
 [Using JHipster in production]: http://www.jhipster.tech/documentation-archive/v4.8.2/production/

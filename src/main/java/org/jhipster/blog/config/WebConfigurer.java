@@ -7,6 +7,7 @@ import io.github.jhipster.web.filter.CachingHttpHeadersFilter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.servlet.InstrumentedFilter;
 import com.codahale.metrics.servlets.MetricsServlet;
+import com.hazelcast.core.HazelcastInstance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,12 +40,15 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
 
     private final JHipsterProperties jHipsterProperties;
 
+    private final HazelcastInstance hazelcastInstance;
+
     private MetricRegistry metricRegistry;
 
-    public WebConfigurer(Environment env, JHipsterProperties jHipsterProperties) {
+    public WebConfigurer(Environment env, JHipsterProperties jHipsterProperties, HazelcastInstance hazelcastInstance) {
 
         this.env = env;
         this.jHipsterProperties = jHipsterProperties;
+        this.hazelcastInstance = hazelcastInstance;
     }
 
     @Override
@@ -161,6 +165,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
             log.debug("Registering CORS filter");
             source.registerCorsConfiguration("/api/**", config);
             source.registerCorsConfiguration("/v2/api-docs", config);
+            source.registerCorsConfiguration("/*/api/**", config);
         }
         return new CorsFilter(source);
     }

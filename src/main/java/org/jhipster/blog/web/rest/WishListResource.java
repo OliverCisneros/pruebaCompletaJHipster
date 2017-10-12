@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Optional;
-import org.jhipster.blog.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * REST controller for managing WishList.
@@ -33,9 +30,6 @@ public class WishListResource {
     private static final String ENTITY_NAME = "wishList";
 
     private final WishListRepository wishListRepository;
-    
-    @Autowired
-    private UserService userService ;
 
     public WishListResource(WishListRepository wishListRepository) {
         this.wishListRepository = wishListRepository;
@@ -55,7 +49,7 @@ public class WishListResource {
         if (wishList.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new wishList cannot already have an ID")).body(null);
         }
-        WishList result = wishListRepository.save(wishList.user(userService.getUserWithAuthorities()).fechaCreacion(LocalDate.now()));
+        WishList result = wishListRepository.save(wishList);
         return ResponseEntity.created(new URI("/api/wish-lists/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -92,7 +86,7 @@ public class WishListResource {
     @Timed
     public List<WishList> getAllWishLists() {
         log.debug("REST request to get all WishLists");
-        return wishListRepository.findByUserIsCurrentUser();  // Le movi :D Solo mostrara el wishlist del user actual
+        return wishListRepository.findAll();
         }
 
     /**

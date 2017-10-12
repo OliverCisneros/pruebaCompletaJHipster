@@ -11,6 +11,10 @@
             "error": "Greška"
         },
         "indicator": {
+            "discoveryComposite": "Discovery Composite",
+            "refreshScope": "Mikroservis Refresh Scope",
+            "configServer": "Mikroservis Konfiguracioni Server",
+            "hystrix": "Hystrix",
             "diskSpace": "Veličina diska",
             "mail": "Email",
             "db": "SQL baza podataka"
